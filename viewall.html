@@ -1,0 +1,62 @@
+<html>
+    <title>Login Form </title>
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: whitesmoke;
+        }
+
+        .login-box h1{
+            float: left;
+            font-size: 40px;
+            border-bottom: 6px solid orange;
+            margin-bottom: 50px;
+            padding: 13ox 0;
+            color: black;
+        }
+        ul{
+            position: relative;
+            top: 100px;
+            right: 60px;
+            list-style-type: circle;
+            
+        }
+
+        .btn{
+            padding: 10px 50px;
+            border-radius: 12px;
+            /* display: flexbox; */
+            margin-left: 75%;
+            margin-top: 1%;
+        }
+
+        .btn:hover{
+            background-color: lightblue;
+        }
+    </style>
+    <body>
+        <div class="login-box">
+        <h1>Names of Users</h1>
+
+        <a href="http://localhost:8080/gethost">
+            <button class="btn">Start</button>
+        </a>
+        
+        <ul id="names" style="color: black;width: 100%;"></ul>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script>
+          $(function () {
+            var socket = io();
+            socket.on('chat name', function(name){
+      $('#names').append($('<li>').text(name));
+    });
+          });
+        </script>
+    </body>
+</html>
